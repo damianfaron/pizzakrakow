@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "168636448625",
+    "project_id": "pizza-krakow999",
+    "storage_bucket": "pizza-krakow999.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:168636448625:android:456e8d1f3d1093bd4e00d0",
+        "android_client_info": {
+          "package_name": "com.damianfaron.pizzakrakow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "168636448625-fntlp6p80t0jvodfdltnfbn354vovhob.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQGygmB7SEQPI0_9PYPUQzz1ZyotC_DSE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "168636448625-fntlp6p80t0jvodfdltnfbn354vovhob.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
