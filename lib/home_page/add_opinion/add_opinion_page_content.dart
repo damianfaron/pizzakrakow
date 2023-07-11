@@ -2,9 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class AddOpinionContent extends StatefulWidget {
-  const AddOpinionContent({
-    super.key,
-  });
+  const AddOpinionContent({super.key, required this.onSave});
+
+  final Function onSave;
 
   @override
   State<AddOpinionContent> createState() => _AddOpinionContentState();
@@ -59,6 +59,7 @@ class _AddOpinionContentState extends State<AddOpinionContent> {
                         'pizza': pizzaName,
                         'rating': rating
                       });
+                      widget.onSave();
                     },
               child: const Text(
                 'Add',
