@@ -12,6 +12,7 @@ class AddOpinionContent extends StatefulWidget {
 
 var rastaurantName = '';
 var pizzaName = '';
+var rating = 1.0;
 
 class _AddOpinionContentState extends State<AddOpinionContent> {
   @override
@@ -26,23 +27,35 @@ class _AddOpinionContentState extends State<AddOpinionContent> {
               onChanged: (newValue) {
                 rastaurantName = newValue;
               },
-              decoration: InputDecoration(hintText: 'Naza restauracji'),
+              decoration: const InputDecoration(hintText: 'Naza restauracji'),
             ),
             TextField(
               onChanged: (newValue) {
                 pizzaName = newValue;
               },
-              decoration: InputDecoration(hintText: 'Naza pizzy'),
+              decoration: const InputDecoration(hintText: 'Naza pizzy'),
             ),
             const SizedBox(
               height: 20,
+            ),
+            Slider(
+              onChanged: (newValue) {
+                setState(() {
+                  rating = newValue;
+                });
+              },
+              value: rating,
+              min: 0.0,
+              max: 10.0,
+              divisions: 20,
+              label: rating.toString(),
             ),
             OutlinedButton(
               onPressed: () {
                 FirebaseFirestore.instance.collection('restaurants').add({
                   'name': rastaurantName,
                   'pizza': pizzaName,
-                  'rating': 3.0
+                  'rating': rating
                 });
               },
               child: const Text('Add'),
