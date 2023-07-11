@@ -26,29 +26,36 @@ class RestaurantsPageContent extends StatelessWidget {
               for (final document in documents) ...[
                 Padding(
                   padding: const EdgeInsets.all(30.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            document['name'],
-                            style: const TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            document['pizza'],
-                          ),
-                        ],
-                      ),
-                      Text(document['rating'].toString()),
-                    ],
+                  child: Dismissible(
+                    key: ValueKey(document),
+                    onDismissed: (_) {
+                      FirebaseFirestore.instance
+                          .collection('restaurants')
+                          .doc(document.id)
+                          .delete();
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              document['name'],
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              document['pizza'],
+                            ),
+                          ],
+                        ),
+                        Text(document['rating'].toString()),
+                      ],
+                    ),
                   ),
                 ),
               ],
-              const SizedBox(
-                height: 100,
-              ),
             ],
           );
         });
