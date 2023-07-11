@@ -1,5 +1,9 @@
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:pizzakrakow/home_page/add_opinion/add_opinion_page_content.dart';
+import 'package:pizzakrakow/home_page/my_account/my_account_page_content.dart';
+import 'package:pizzakrakow/home_page/restaurants/restaurants_page_content.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -18,36 +22,27 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Builder(builder: (context) {
+          if (currenIndex == 1) {
+            return const Text('Dodaj swoją pizzę');
+          }
+          if (currenIndex == 2) {
+            return const Text('Twój profil');
+          }
+          return const Text(
+            'Najlepsza Pizza w Krakowie',
+          );
+        }),
+      ),
       body: Builder(builder: (context) {
         if (currenIndex == 0) {
-          return const Center(
-            child: Text('Home'),
-          );
+          return const RestaurantsPageContent();
         }
         if (currenIndex == 1) {
-          return const Center(
-            child: Text('Add'),
-          );
+          return const AddOpinionContent();
         }
-        return Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Center(
-                child: Text('Jesteś zalogowany jako ${widget.user.email}'),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  FirebaseAuth.instance.signOut();
-                },
-                child: const Text('Wyloguj'),
-              ),
-            ],
-          ),
-        );
+        return MyAccountPageContent(email: widget.user.email);
       }),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currenIndex,
