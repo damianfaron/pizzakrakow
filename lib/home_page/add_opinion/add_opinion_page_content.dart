@@ -10,11 +10,10 @@ class AddOpinionContent extends StatefulWidget {
   State<AddOpinionContent> createState() => _AddOpinionContentState();
 }
 
-var rastaurantName = '';
-var pizzaName = '';
-var rating = 1.0;
-
 class _AddOpinionContentState extends State<AddOpinionContent> {
+  var rastaurantName = '';
+  var pizzaName = '';
+  var rating = 1.0;
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -52,13 +51,15 @@ class _AddOpinionContentState extends State<AddOpinionContent> {
               activeColor: Colors.black,
             ),
             OutlinedButton(
-              onPressed: () {
-                FirebaseFirestore.instance.collection('restaurants').add({
-                  'name': rastaurantName,
-                  'pizza': pizzaName,
-                  'rating': rating
-                });
-              },
+              onPressed: rastaurantName.isEmpty || pizzaName.isEmpty
+                  ? null
+                  : () {
+                      FirebaseFirestore.instance.collection('restaurants').add({
+                        'name': rastaurantName,
+                        'pizza': pizzaName,
+                        'rating': rating
+                      });
+                    },
               child: const Text(
                 'Add',
                 style: TextStyle(color: Colors.black),

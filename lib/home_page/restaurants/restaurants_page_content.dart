@@ -25,7 +25,7 @@ class RestaurantsPageContent extends StatelessWidget {
             children: [
               for (final document in documents) ...[
                 Padding(
-                  padding: const EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.all(30.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
