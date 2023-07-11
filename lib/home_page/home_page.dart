@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
           return const RestaurantsPageContent();
         }
         if (currenIndex == 1) {
-          return const AddOpinionContent();
+          return  AddOpinionContent();
         }
         return MyAccountPageContent(email: widget.user.email);
       }),
