@@ -55,6 +55,7 @@ class RestaurantsPageContent extends StatelessWidget {
                     ),
                   ),
                 ),
+                Scaffold()
               ],
             ],
           );
