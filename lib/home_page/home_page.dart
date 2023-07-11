@@ -1,4 +1,3 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pizzakrakow/home_page/add_opinion/add_opinion_page_content.dart';
@@ -40,7 +39,7 @@ class _HomePageState extends State<HomePage> {
           return const RestaurantsPageContent();
         }
         if (currenIndex == 1) {
-          return  AddOpinionContent();
+          return const AddOpinionContent();
         }
         return MyAccountPageContent(email: widget.user.email);
       }),
@@ -53,8 +52,8 @@ class _HomePageState extends State<HomePage> {
         },
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+            icon: Icon(Icons.brightness_auto_outlined),
+            label: 'Opinie',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.add),

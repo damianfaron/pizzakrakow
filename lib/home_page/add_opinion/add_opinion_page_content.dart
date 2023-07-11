@@ -49,6 +49,7 @@ class _AddOpinionContentState extends State<AddOpinionContent> {
               max: 10.0,
               divisions: 20,
               label: rating.toString(),
+              activeColor: Colors.black,
             ),
             OutlinedButton(
               onPressed: () {
@@ -58,7 +59,10 @@ class _AddOpinionContentState extends State<AddOpinionContent> {
                   'rating': rating
                 });
               },
-              child: const Text('Add'),
+              child: const Text(
+                'Add',
+                style: TextStyle(color: Colors.black),
+              ),
             )
           ],
         ),
