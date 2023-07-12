@@ -1,5 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pizzakrakow/home_page/restaurants/cubit/restaurants_cubit.dart';
 
 class RestaurantsPageContent extends StatelessWidget {
   const RestaurantsPageContent({
@@ -8,19 +9,17 @@ class RestaurantsPageContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-        stream: FirebaseFirestore.instance
-            .collection('restaurants')
-            .orderBy('rating', descending: true)
-            .snapshots(),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
+    return BlocProvider(
+      create: (context) => RestaurantsCubit()..start(),
+      child: BlocBuilder<RestaurantsCubit, RestaurantsState>(
+        builder: (context, state) {
+          if (state.errorMessage.isNotEmpty) {
             return const Center(child: Text('Coś poszło nie tak'));
           }
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: Text('Trwa ładowanie danych'));
+          if (state.isLoading == true) {
+            return const Center(child: CircularProgressIndicator());
           }
-          final documents = snapshot.data!.docs;
+          final documents = state.documents;
           return ListView(
             children: [
               for (final document in documents) ...[
@@ -29,10 +28,11 @@ class RestaurantsPageContent extends StatelessWidget {
                   child: Dismissible(
                     key: ValueKey(document),
                     onDismissed: (_) {
-                      FirebaseFirestore.instance
-                          .collection('restaurants')
-                          .doc(document.id)
-                          .delete();
+                      state.document;
+                      // FirebaseFirestore.instance
+                      //     .collection('restaurants')
+                      //     .doc(document.id)
+                      //     .delete();
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -55,10 +55,11 @@ class RestaurantsPageContent extends StatelessWidget {
                     ),
                   ),
                 ),
-                Scaffold()
               ],
             ],
           );
-        });
+        },
+      ),
+    );
   }
 }
