@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:pizzakrakow/app/features/home_page/home_page.dart';
+import 'package:pizzakrakow/app/features/login_page/login_page.dart';
 import 'package:pizzakrakow/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:pizzakrakow/home_page/home_page.dart';
-import 'package:pizzakrakow/login_page/login_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -42,11 +42,10 @@ class RootPage extends StatelessWidget {
           final user = snapshot.data;
 
           if (user == null) {
-            return  LoginPage();
+            return LoginPage();
           }
 
-          return  HomePage(user: user);
+          return HomePage(user: user);
         });
   }
 }
-
