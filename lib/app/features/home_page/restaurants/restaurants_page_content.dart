@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pizzakrakow/app/features/home_page/restaurants/cubit/restaurants_cubit.dart';
 
-
 class RestaurantsPageContent extends StatelessWidget {
   const RestaurantsPageContent({
     super.key,
@@ -29,6 +28,9 @@ class RestaurantsPageContent extends StatelessWidget {
                   child: Dismissible(
                     key: ValueKey(document),
                     onDismissed: (_) {
+                      // context
+                      //     .read<RestaurantsCubit>()
+                      //     .deleteRestautanst(document.id);
                       state.document;
                       // FirebaseFirestore.instance
                       //     .collection('restaurants')

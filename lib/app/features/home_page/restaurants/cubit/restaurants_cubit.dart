@@ -38,6 +38,7 @@ class RestaurantsCubit extends Cubit<RestaurantsState> {
             isLoading: false,
           ),
         );
+
       },
     )..onError((error) {
         emit(
@@ -56,3 +57,4 @@ class RestaurantsCubit extends Cubit<RestaurantsState> {
     return super.close();
   }
 }
+
