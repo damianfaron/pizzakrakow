@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:pizzakrakow/home_page/add_opinion/add_opinion_page_content.dart';
-import 'package:pizzakrakow/home_page/my_account/my_account_page_content.dart';
-import 'package:pizzakrakow/home_page/restaurants/restaurants_page_content.dart';
+import 'package:pizzakrakow/app/features/home_page/add_opinion/add_opinion_page_content.dart';
+import 'package:pizzakrakow/app/features/home_page/my_account/my_account_page_content.dart';
+import 'package:pizzakrakow/app/features/home_page/restaurants/restaurants_page_content.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({

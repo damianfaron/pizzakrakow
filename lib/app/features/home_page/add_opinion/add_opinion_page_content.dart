@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+
+
 class AddOpinionContent extends StatefulWidget {
   const AddOpinionContent({super.key, required this.onSave});
 
@@ -54,11 +56,13 @@ class _AddOpinionContentState extends State<AddOpinionContent> {
               onPressed: rastaurantName.isEmpty || pizzaName.isEmpty
                   ? null
                   : () {
+                      // context.read<AddopinionCubit>().addOpinion();
                       FirebaseFirestore.instance.collection('restaurants').add({
                         'name': rastaurantName,
                         'pizza': pizzaName,
                         'rating': rating
                       });
+               
                       widget.onSave();
                     },
               child: const Text(
